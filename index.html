@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concrete and Glass: Performance and Maintenance Case Study</title>
+    <style>
+        /* Intel Design System Imitation */
+        :root {
+            --intel-blue: #0068B5;
+            --intel-dark: #002855;
+            --text-primary: #262626;
+            --text-secondary: #545454;
+            --bg-light: #F7F7F7;
+            --border-color: #D6D6D6;
+        }
+
+        body {
+            font-family: "Intel Clear", "Tahoma", Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-primary);
+            line-height: 1.6;
+            background-color: #fff;
+        }
+
+        /* --- Header / Navigation --- */
+        nav {
+            background-color: #fff;
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 40px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-logo {
+            color: var(--intel-blue);
+            font-weight: 700;
+            font-size: 20px;
+            margin-right: 40px;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: var(--intel-dark);
+            background-image: linear-gradient(to right, #002855, #005b9f);
+            color: #fff;
+            padding: 60px 40px;
+        }
+
+        .hero h1 {
+            font-weight: 300;
+            font-size: 42px;
+            margin: 0 0 20px 0;
+        }
+
+        .hero h2 {
+            font-size: 24px;
+            font-weight: 300;
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        .hero p {
+            color: #fff;
+            opacity: 0.9;
+            max-width: 900px;
+        }
+
+        /* --- Main Content --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Typography */
+        h2 {
+            color: var(--text-primary);
+            font-weight: 300;
+            font-size: 32px;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero h1 {
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* Figure Row Layout */
+        .figure-row {
+            display: flex;
+            gap: 20px;
+            margin: 30px 0;
+            justify-content: center;
+        }
+
+        .figure-item {
+            position: relative;
+            flex: 1;
+            max-width: 33%;
+        }
+
+        .figure-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+        }
+
+        .figure-label {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            padding: 2px 8px;
+            font-size: 14px;
+            border-radius: 3px;
+        }
+
+        h3 {
+            color: var(--text-primary);
+            font-weight: 700;
+            font-size: 20px;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--intel-blue);
+            padding-left: 15px;
+        }
+
+        p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 18px;
+            text-align: justify;
+        }
+
+        /* --- Tables (Intel Style) --- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 14px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        th {
+            background-color: #fff;
+            text-align: left;
+            padding: 15px;
+            border-bottom: 2px solid var(--intel-blue);
+            font-weight: 700;
+            color: var(--intel-dark);
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #e2e2e2;
+            color: var(--text-secondary);
+            vertical-align: top;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9fbfd;
+        }
+
+        .table-caption {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--intel-blue);
+            display: block;
+            font-size: 18px;
+        }
+
+        /* --- Images --- */
+        .figure-box {
+            background-color: var(--bg-light);
+            border: 1px dashed #999;
+            padding: 40px;
+            text-align: center;
+            margin: 30px 0;
+            color: #666;
+            border-radius: 4px;
+        }
+
+        .figure-caption {
+            font-size: 14px;
+            color: #777;
+            text-align: center;
+            margin-top: -20px;
+            margin-bottom: 30px;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        /* --- References --- */
+        .references {
+            background-color: var(--bg-light);
+            padding: 40px;
+            margin-top: 60px;
+            border-top: 4px solid var(--intel-blue);
+        }
+
+        .references h2 {
+            margin-top: 0;
+            border-bottom: none;
+            font-size: 24px;
+        }
+
+        .ref-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .ref-list li {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            text-indent: -20px;
+            line-height: 1.5;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-logo">Case Study Report</div>
+    </nav>
+
+    <div class="hero">
+        <h1>Concrete and Glass: Performance and Maintenance Case Study</h1>
+        <p>This report presents a case study of Darma Tower, a landmark high-rise residential development in London's Nine Elms regeneration area. It comprises two interconnected towers—a 50-story, approximately 170-meter-tall structure and a 23-story tower—housing 360 luxury apartments. The podium level features multifunctional commercial and leisure spaces. Completed in 2022, the building is a significant component of London's contemporary skyline.</p>
+        <p>Primarily residential in function, the structure employs a reinforced concrete frame with a glass curtain wall envelope system (British Standards Institution, 2013; British Standards Institution, 2016a). The building adopts a modern minimalist aesthetic, characterized by its concrete structure and glass envelope, tailored to meet the functional demands of high-density living.</p>
+    </div>
+
+    <div class="container">
+        
+        <div class="figure-box">
+            [Image: Figure 1-1 Darma Tower Exterior]
+            <br><small>(Placeholder for actual photograph)</small>
+        </div>
+        <p class="figure-caption">Actual photographs are shown in Figure 1-1.</p>
+
+        <h2>2. Material Selection Criteria</h2>
+
+        <h3>2.1 Selection of Concrete</h3>
+        <p>Taking the Damac Tower high-rise residential building in London as an example, this multi-story residential structure requires a design capable of enduring long-term vertical loads (such as floor slab dead weight, furniture, and occupant loads) while primarily controlling horizontal forces from wind action.</p>
+        <p>In such high-rise residences, reinforced concrete structures offer high load-bearing capacity and overall stiffness. This effectively controls inter-story lateral displacement and vibration comfort, meeting the stress and deformation requirements for primary components like columns, walls, cores, and floor slabs.</p>
+        <p>Regarding fire resistance, concrete's non-combustible nature, combined with structural controls like member dimensions and protective layers, facilitates achieving the required fire resistance ratings for residential buildings.</p>
+        <p>In terms of durability and maintenance, concrete benefits from a mature supply chain and relatively controllable costs. Through proper protective layers, waterproofing, and detailing, it maintains excellent durability and structural stability in London's rainy, humid climate, significantly reducing long-term maintenance expenses.</p>
+        <p>Consequently, concrete was selected as the core structural material to balance structural safety, construction efficiency, and long-term asset value.</p>
+
+        <h3>2.2 Glass Selection</h3>
+        <p>The extensive use of glass centers on functionality and aesthetics: glass curtain walls maximize natural daylight to create bright living environments; double- or triple-pane glass units ensure adequate lighting while meeting thermal and acoustic regulations.</p>
+        <p>Functionally, the glass envelope system significantly improves indoor lighting and reduces artificial lighting energy consumption. Double-pane insulated glass provides both thermal insulation and soundproofing, meeting modern apartment comfort requirements.</p>
+        <p>Aesthetically, glass curtain walls create a clean, contemporary appearance that harmonizes with surrounding architectural styles. Glass partitions in internal common areas enhance transparency and visual openness.</p>
+        <p>For safety, tempered and laminated safety glass complies with high-density residential standards, preventing injuries from broken glass.</p>
+
+        <h2>3. Material Specifications and Performance Requirements</h2>
+
+        <h3>3.1 Specifications and Performance Requirements for Concrete Materials</h3>
+        <p>Table 3-1 “Summary of Concrete Member Specifications and Performance” systematically outlines the differentiated requirements for concrete strength, fire resistance, acoustic performance, thermal performance, and durability for structural columns and beams, floor slabs, and related exterior envelope components.</p>
+        
+        <div class="figure-row">
+            <div class="figure-item">
+                <span class="figure-label">(a)</span>
+                <img src="images/3_1/a.jpg" alt="Primary Columns">
+            </div>
+            <div class="figure-item">
+                <span class="figure-label">(b)</span>
+                <img src="images/3_1/b.jpg" alt="Stair Core">
+            </div>
+            <div class="figure-item">
+                <span class="figure-label">(c)</span>
+                <img src="images/3_1/c.jpg" alt="Wall Detail">
+            </div>
+        </div>
+        <p class="figure-caption">Figure 3-1 presents corresponding on-site photographs illustrating the three key concrete component types listed in Table 3-1.</p>
+
+        <p>London's climate is generally mild with relatively frequent rainfall, where wind typically dominates horizontal forces on high-rise buildings. Under these environmental and usage conditions, critical control points for concrete components generally focus on service performance (deflection/crack control), construction quality (vibration and curing), and durability with joint sealing continuity in humid environments.</p>
+        <p>Indoor areas maintain relatively stable temperature and humidity, yet columns, beams, and floor slabs must still bear self-weight and live loads while meeting deformation and crack control requirements during normal service life. Inadequate compaction during construction or insufficient curing can lead to surface defects like honeycombing and bugholes , compromising durability.</p>
+        <p>Basements and similar spaces are more prone to humid conditions. Particular attention should be given to the integrity of closures and surface protection at details such as slab undersides and joints/sealing lines.</p>
+        <p>Exterior envelope components are directly exposed to rain and wind. The continuity of construction joints and node seals significantly impacts water infiltration risks and the thermal performance of the envelope structure. Therefore, material durability and node detailing practices should be controlled and verified according to applicable code requirements.</p>
+
+        <span class="table-caption">Table 3-1 Summary of Concrete Element Specifications and Performance Requirements</span>
+        <table>
+            <thead>
+                <tr>
+                    <th>Application</th>
+                    <th>Likely specification</th>
+                    <th>Performance requirements</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Primary structural columns</td>
+                    <td>Concrete: C40/50 (BSI, 2021); Reinforcement: B500B/B500C (BSI, 2016)</td>
+                    <td>Strength : C40/50 (BSI, 2021); Fire : REI 60 (HM Government, 2019/2025); Serviceability : deflection/crack control to Eurocode 2 (BSI, 2004)</td>
+                </tr>
+                <tr>
+                    <td>Floor slabs (PT post-tensioned system)</td>
+                    <td>System: post-tensioned slab (PT) (BSI, 2004); Concrete: C40/50 (BSI, 2021)</td>
+                    <td>Serviceability (SLS) : deflection/crack control to Eurocode 2 (BSI, 2004); Fire : REI 60 (HM Government, 2019/2025); Local checks : punching shear/anchorage zone checks to Eurocode 2 (BSI, 2004) </td>
+                </tr>
+                <tr>
+                    <td>Facade-related concrete locations (e.g., basement walls, slab edges/edge beams)</td>
+                    <td>Concrete and durability specification: BS EN 206 + BS 8500-1 (BSI, 2021; BSI, 2023); Regulatory performance references: AD B/L/E (HM Government, 2015; HM Government, 2021/2023; HM Government, 2019/2025)</td>
+                    <td>Durability : exposure-based durability controls to BS 8500-1 (BSI, 2023); Thermal : Approved Document L (HM Government, 2021/2023); Acoustics : Approved Document E (HM Government, 2015); Fire : Approved Document B (HM Government, 2019/2025)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>3.2 Glass Specifications</h3>
+        <p>Table 3-2 Summary of Glass Component Specifications and Performance (see table below) outlines key material standard identifications and safety considerations for exterior facade glass/window glass, interior glass partition doors in public areas, and balcony balustrade/railing glass.</p>
+        
+        <div class="figure-row">
+            <div class="figure-item">
+                <span class="figure-label">(a)</span>
+                <img src="images/3_2/a.jpg" alt="Glass Safety Marking a">
+            </div>
+            <div class="figure-item">
+                <span class="figure-label">(b)</span>
+                <img src="images/3_2/b.jpg" alt="Glass Safety Marking b">
+            </div>
+            <div class="figure-item">
+                <span class="figure-label">(c)</span>
+                <img src="images/3_2/c.jpg" alt="Interior Glass Doors">
+            </div>
+            <div class="figure-item">
+                <span class="figure-label">(d)</span>
+                <img src="images/3_2/d.jpg" alt="Glass Detail d">
+            </div>
+            <div class="figure-item">
+                <span class="figure-label">(e)</span>
+                <img src="images/3_2/e.jpg" alt="Glass Detail e">
+            </div>
+        </div>
+        <p class="figure-caption">Figure 3-2 presents on-site photographs: Figures 3-2a and 3-2b both show etched markings on glass corners with consistent text, including "BS EN 14449, BS EN 1863-1, Class 1(B)1," indicating the laminated safety glass product standard, heat-strengthened glass-related standard, and pendulum impact test classification (British Standards Institution, 2002; British Standards Institution, 2006; British Standards Institution, 2012).</p>
+        
+        <p>Figure 3-2c shows the on-site configuration of interior glass partition doors in public areas: frameless double-leaf glass doors with clamp-type hardware connections, featuring a visual privacy strip (frosted squares) at the center of each door leaf. The etched safety markings on the glass edges are not legible in this photograph; therefore, the specific safety glass type and grade require further verification via product nameplates, supply documentation, or clearer photographs of the edge markings.</p>
+        <p>Regarding performance verification criteria: Safety glass installation and visibility marking (manifestation) requirements related to pedestrian impact risks may be verified according to the provisions of Approved Document K (HM Government, 2013).</p>
+
+        <span class="table-caption">Table 3-2 Summary of Glass Component Specifications and Performance Requirements</span>
+        <table>
+            <thead>
+                <tr>
+                    <th>Application</th>
+                    <th>Likely specification</th>
+                    <th>Performance requirements</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Façade glazing / window–curtain wall glazing</td>
+                    <td>Etched marking is visible at the corner and includes BS EN 14449, BS EN 1863-1 and impact class Class 1(B)1 (British Standards Institution, 2006; British Standards Institution, 2012; British Standards Institution, 2002).</td>
+                    <td>Thermal: compare window/curtain wall U-value performance against the limiting values in Approved Document L (Volume 1) (HM Government, 2021). Safety / collision: safety glazing approach where relevant can be expressed using BS EN 12600 impact classification (British Standards Institution, 2002).</td>
+                </tr>
+                <tr>
+                    <td>Balcony balustrade / guarding glazing</td>
+                    <td>The etched marking on the balcony guarding glazing is the same as Photo 1: BS EN 14449 / BS EN 1863-1 / Class 1(B)1 (British Standards Institution, 2006; British Standards Institution, 2012; British Standards Institution, 2002).</td>
+                    <td>Guarding / barrier context: guarding provisions and collision/impact context can be referenced to Approved Document K; guarding design is commonly referenced to BS 6180 where applicable (HM Government, 2013; British Standards Institution, 2011).</td>
+                </tr>
+                <tr>
+                    <td>Interior glass partition doors</td>
+                    <td>Frameless glazed double-leaf door with patch fittings and a horizontal pull handle; frosted square decals at mid-height. No etched safety marking is legible/visible in the provided photographs.</td>
+                    <td>Safety glazing / critical locations: requirements for glazing in doors and adjacent panels and visibility/manifestation provisions are set out in Approved Document K; impact performance is commonly expressed using BS EN 12600 classification (HM Government, 2013; British Standards Institution, 2002).</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>4. Maintenance or performance issues</h2>
+
+        <h3>4.1 Concrete Repair</h3>
+        <div class="figure-row">
+            <div class="figure-item">
+                <span class="figure-label">(a)</span>
+                <img src="images/4_1/a.jpg" alt="Maintenance and Repair">
+            </div>
+        </div>
+        <p>Field photographs reveal continuous linear sealing lines beneath the basement slab, with vertical sealing strips visible at wall-column junctions. Walls exhibit visible traces of surface treatment, including regular hole plugging and localized patching.</p>
+        <p>Given London's relatively humid environment and prolonged usage conditions, discontinuities in these sealing lines or localized coating failures may allow moisture migration along interfaces, leading to localized damp patches. This accelerates coating chalking, edge lifting, and increased demand for secondary repairs. Such issues primarily manifest as compromised durability and elevated maintenance frequency, without directly indicating structural safety concerns based on current observations.</p>
+
+        <h2>Conclusion</h2>
+        <p>This report analyzes two core materials—concrete and glass—used in London apartments, drawing the following key conclusions:</p>
+        <p>Material selection for apartments must rigorously balance structural safety, functional comfort, and cost control. Concrete frame structures meet the load-bearing and fireproofing requirements of multi-story buildings, while glass envelope systems achieve functional objectives of daylighting, thermal insulation, and soundproofing.</p>
+        <p>The combined application of these materials represents one of the optimal solutions for high-density residential scenarios in apartments. Maintenance issues with building materials are often linked to construction quality and environmental aging.</p>
+        <p>Problems like concrete cracking require standardized construction techniques and regular maintenance to extend the building's lifespan. This case study demonstrates that precisely matching material selection to performance requirements is central to construction engineering.</p>
+        <p>Only by integrating building function, regional climate, and usage scenarios can structural safety, residential comfort, and durability be unified. Field observations reveal that even after meticulous design and construction, material performance degradation remains an inevitable long-term challenge.</p>
+    </div>
+
+    <div class="references">
+        <h2>References</h2>
+        <ul class="ref-list">
+            <li>British Standards Institution (BSI) (2004) BS EN 1992-1-1:2004 Eurocode 2: Design of concrete structures – Part 1-1: General rules and rules for buildings. London: British Standards Institution.</li>
+            <li>British Standards Institution (BSI) (2016) BS 4449:2005+A3:2016 Steel for the reinforcement of concrete – Weldable reinforcing steel – Specification. London: British Standards Institution.</li>
+            <li>British Standards Institution (BSI) (2021) BS EN 206:2013+A2:2021 Concrete – Specification, performance, production and conformity. London: British Standards Institution.</li>
+            <li>British Standards Institution (BSI) (2023) BS 8500-1:2023 Concrete – Complementary British Standard to BS EN 206 – Part 1: Method of specifying and guidance for the specifier. London: British Standards Institution.</li>
+            <li>HM Government (2013) Approved Document K: Protection from falling, collision and impact (2013 edition). London: HM Government. Available at: GOV.UK (Accessed: 13 January 2026).</li>
+            <li>HM Government (2015) Approved Document E: Resistance to the passage of sound. London: HM Government. Available at: GOV.UK (Accessed: 13 January 2026).</li>
+            <li>HM Government (2019) Approved Document B: Fire safety, Volume 1: Dwellings (2019 edition incorporating amendments). London: HM Government. Available at: GOV.UK (Accessed: 13 January 2026).</li>
+            <li>HM Government (2021) Approved Document L: Conservation of fuel and power, Volume 1: Dwellings (2021 edition incorporating 2023 amendments). London: HM Government. Available at: GOV.UK (Accessed: 13 January 2026).</li>
+            <li>British Standards Institution (BSI) (2002) BS EN 12600:2002 Glass in building — Pendulum test — Impact test method and classification for flat glass. London: British Standards Institution.</li>
+            <li>British Standards Institution (BSI) (2006) BS EN 14449:2005 Glass in building — Laminated glass and laminated safety glass — Evaluation of conformity / Product standard. London: British Standards Institution.</li>
+            <li>British Standards Institution (BSI) (2011) BS 6180:2011 Barriers in and about buildings — Code of practice. London: British Standards Institution.</li>
+            <li>British Standards Institution (BSI) (2012) BS EN 1863-1:2011 Glass in building — Heat strengthened soda lime silicate glass — Part 1: Definition and description. London: British Standards Institution.</li>
+        </ul>
+    </div>
+
+</body>
+</html>
